@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Bicara Mudah - AAC</title>
+<link rel="manifest" href="manifest.json" />
+<style>
+  body { font-family: Arial, sans-serif; background: #f0f4f8; margin:0; padding:20px; }
+  h1 { text-align: center; color: #2c3e50; }
+  .container { max-width: 480px; margin: auto; display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
+  button { background: white; border: 2px solid #3498db; border-radius: 12px; padding: 20px; font-size: 1.2em; cursor: pointer; box-shadow: 2px 2px 6px #bbb; display: flex; flex-direction: column; align-items: center; transition: 0.3s; }
+  button:hover { background: #3498db; color: white; }
+  img { width: 80px; height: 80px; margin-bottom: 10px; }
+</style>
+</head>
+<body>
+<h1>Bicara Mudah</h1>
+<div class="container">
+  <button onclick="speak('Saya lapar')"><img src="img/makan.png" alt="Makan" /><span>Saya lapar</span></button>
+  <button onclick="speak('Saya haus')"><img src="img/minum.png" alt="Minum" /><span>Saya haus</span></button>
+  <button onclick="speak('Saya mau ke toilet')"><img src="img/toilet.png" alt="Toilet" /><span>Saya mau ke toilet</span></button>
+  <button onclick="speak('Saya senang')"><img src="img/senang.png" alt="Senang" /><span>Saya senang</span></button>
+  <button onclick="speak('Saya sedih')"><img src="img/sedih.png" alt="Sedih" /><span>Saya sedih</span></button>
+  <button onclick="speak('Saya marah')"><img src="img/marah.png" alt="Marah" /><span>Saya marah</span></button>
+  <button onclick="speak('Halo!')"><img src="img/hallo.png" alt="Halo" /><span>Halo!</span></button>
+  <button onclick="speak('Terima kasih')"><img src="img/terimakasih.png" alt="Terima Kasih" /><span>Terima kasih</span></button>
+</div>
+
+<script>
+function speak(text) {
+  if ('speechSynthesis' in window) {
+    var msg = new SpeechSynthesisUtterance();
+    msg.lang = 'id-ID';
+    msg.text = text;
+    window.speechSynthesis.cancel();
+    window.speechSynthesis.speak(msg);
+  } else {
+    alert('Browser Anda tidak mendukung Text-to-Speech.');
+  }
+}
+</script>
+
+</body>
+</html>
